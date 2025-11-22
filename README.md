@@ -136,7 +136,7 @@
         assertEquals("base", utils.getMyStr());
     }
 ```
-## Filed
+## Failed
 ```
     // 2. Single-argument constructor with null should throw NullPointerException (per comments)
     @Test(expected = NullPointerException.class)

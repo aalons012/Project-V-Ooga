@@ -4,6 +4,7 @@ import java.security.InvalidParameterException;
 
 public class StringUtilsTest2 {
 
+	// pass
     // 1. Single-argument constructor with valid non-empty string
     @Test
     public void testConstructor_singleArg_validNonEmptyString_setsMyStr() {
@@ -11,25 +12,29 @@ public class StringUtilsTest2 {
         assertEquals("Hello", utils.getMyStr());
     }
 
+    // fail
     // 2. Single-argument constructor with null should throw NullPointerException (per comments)
     @Test(expected = NullPointerException.class)
     public void testConstructor_singleArg_null_throwsNullPointerException() {
         new StringUtils(null);
     }
 
+    // fail
     // 3. Single-argument constructor with empty string should throw NullPointerException (per comments)
     @Test(expected = NullPointerException.class)
     public void testConstructor_singleArg_emptyString_throwsNullPointerException() {
         new StringUtils("");
     }
 
+    //pass
     // 4. Two-argument constructor upper=true converts to upper-case
     @Test
     public void testConstructor_twoArg_upperTrue_convertsToUpperCase() {
         StringUtils utils = new StringUtils("abc", true);
         assertEquals("ABC", utils.getMyStr());
     }
-
+    
+    // PASS
     // 5. Two-argument constructor upper=false converts to lower-case
     @Test
     public void testPASSConstructor_twoArg_upperFalse_convertsToLowerCase() {
@@ -37,18 +42,21 @@ public class StringUtilsTest2 {
         assertEquals("abc", utils.getMyStr());
     }
 
+    //PASS
     // 6. Two-argument constructor with null should throw NullPointerException (per comments)
     @Test(expected = NullPointerException.class)
     public void testConstructor_twoArg_nullString_throwsNullPointerException() {
         new StringUtils(null, true);
     }
 
+    // FAIL
     // 7. Two-argument constructor with empty string should throw NullPointerException (per comments)
     @Test(expected = NullPointerException.class)
     public void testConstructor_twoArg_emptyString_throwsNullPointerException() {
         new StringUtils("", false);
     }
-
+    
+    // PASS
     // 8. getMyStr returns current value after construction and concatenation
     @Test
     public void testGetMyStr_returnsCurrentValueAfterConstruction() {
@@ -58,6 +66,7 @@ public class StringUtilsTest2 {
         assertEquals("baseX", utils.getMyStr());
     }
 
+    // PASS
     // 9. endsWithChar returns true when last character matches
     @Test
     public void testEndsWithChar_trueWhenLastCharMatches() {
@@ -65,6 +74,7 @@ public class StringUtilsTest2 {
         assertTrue(utils.endsWithChar('o'));
     }
 
+    // PASS
     // 10. endsWithChar returns false when last character does not match
     @Test
     public void testEndsWithChar_falseWhenLastCharDoesNotMatch() {
@@ -72,6 +82,7 @@ public class StringUtilsTest2 {
         assertFalse(utils.endsWithChar('a'));
     }
 
+    // PASS
     // 11. endsWithChar comparison is case-sensitive
     @Test
     public void testEndsWithChar_isCaseSensitiveOnLastChar() {
@@ -80,6 +91,7 @@ public class StringUtilsTest2 {
         assertFalse(utils.endsWithChar('o'));
     }
 
+    // PASS
     // 12. endsWithChar works for single-character strings
     @Test
     public void testEndsWithChar_singleCharacterString() {
@@ -88,6 +100,7 @@ public class StringUtilsTest2 {
         assertFalse(utils.endsWithChar('y'));
     }
 
+    // FAIL
     // 13. endsWithChar on empty string should be handled (we expect false per reasonable spec)
     @Test
     public void testEndsWithChar_onEmptyString_shouldReturnFalse() {
@@ -96,6 +109,7 @@ public class StringUtilsTest2 {
         assertFalse(utils.endsWithChar('a'));           // current code will throw an exception here
     }
 
+    // FAIL
     // 14. convertToUpperCase converts all-lowercase word to upper-case
     @Test
     public void testConvertToUpperCase_allLowercaseWord() {
@@ -104,6 +118,7 @@ public class StringUtilsTest2 {
         assertEquals("HELLO", result);
     }
 
+    // FAIL
     // 15. convertToUpperCase converts mixed-case word to all upper-case
     @Test
     public void testConvertToUpperCase_mixedCaseWord() {
@@ -112,6 +127,7 @@ public class StringUtilsTest2 {
         assertEquals("HELLO", result);
     }
 
+    // FAIL
     // 16. convertToUpperCase leaves already upper-case word unchanged
     @Test
     public void testConvertToUpperCase_alreadyUppercaseWord() {
@@ -120,6 +136,7 @@ public class StringUtilsTest2 {
         assertEquals("WORLD", result);
     }
 
+    // FAIL
     // 17. convertToUpperCase handles single-character strings
     @Test
     public void testConvertToUpperCase_singleCharacter() {
@@ -128,6 +145,7 @@ public class StringUtilsTest2 {
         assertEquals("Z", result);
     }
 
+    // FAIL
     // 18. convertToUpperCase handles two-character strings
     @Test
     public void testConvertToUpperCase_twoCharacterString() {
@@ -136,6 +154,7 @@ public class StringUtilsTest2 {
         assertEquals("AB", result);
     }
 
+    // FAIL
     // 19. convertToUpperCase should also update the myStr attribute (per comment text)
     @Test
     public void testConvertToUpperCase_updatesMyStrAttributeToUppercase() {
@@ -146,6 +165,7 @@ public class StringUtilsTest2 {
         assertEquals("HELLO", utils.getMyStr());
     }
 
+    // PASS
     // 20. returnCharAt(0) returns the first character
     @Test
     public void testReturnCharAt_zeroIndexReturnsFirstChar() {
@@ -153,6 +173,7 @@ public class StringUtilsTest2 {
         assertEquals('a', utils.returnCharAt(0));
     }
 
+    // PASS
     // 21. returnCharAt(lastIndex) returns the last character
     @Test
     public void testReturnCharAt_lastIndexReturnsLastChar() {
@@ -160,6 +181,7 @@ public class StringUtilsTest2 {
         assertEquals('c', utils.returnCharAt(2));
     }
 
+    // FAIL
     // 22. returnCharAt with negative index should throw IndexOutOfBoundsException (per comments)
     @Test(expected = IndexOutOfBoundsException.class)
     public void testReturnCharAt_negativeIndex_throwsIndexOutOfBoundsException() {
@@ -167,6 +189,7 @@ public class StringUtilsTest2 {
         utils.returnCharAt(-1);
     }
 
+    // FAIL
     // 23. returnCharAt with index greater than length should throw IndexOutOfBoundsException (per comments)
     @Test(expected = IndexOutOfBoundsException.class)
     public void testReturnCharAt_indexGreaterThanLength_throwsIndexOutOfBoundsException() {
@@ -174,6 +197,7 @@ public class StringUtilsTest2 {
         utils.returnCharAt(5);
     }
 
+    // PASS
     // 24. returnCharAt with index equal to length should throw IndexOutOfBoundsException
     @Test(expected = IndexOutOfBoundsException.class)
     public void testReturnCharAt_indexEqualToLength_throwsIndexOutOfBoundsException() {
@@ -181,6 +205,7 @@ public class StringUtilsTest2 {
         utils.returnCharAt(3);
     }
 
+    // PASS
     // 25. returnCharAt on middle index after concatenation
     @Test
     public void testReturnCharAt_middleIndexAfterConcatenation() {
@@ -189,6 +214,7 @@ public class StringUtilsTest2 {
         assertEquals('b', utils.returnCharAt(1));
     }
 
+    // PASS
     // 26. updateToConcat with valid non-empty string appends at the end
     @Test
     public void testUpdateToConcat_validNonEmptyString_appendsToEnd() {
@@ -198,6 +224,7 @@ public class StringUtilsTest2 {
         assertEquals("abcXYZ", utils.getMyStr());
     }
 
+    // PASS
     // 27. updateToConcat called multiple times accumulates in order
     @Test
     public void testUpdateToConcat_multipleConcats_accumulateInOrder() {
@@ -207,6 +234,7 @@ public class StringUtilsTest2 {
         assertEquals("start_one_two", result);
     }
 
+    // FAIL
     // 28. updateToConcat with empty string should throw InvalidParameterException (per comments)
     @Test(expected = InvalidParameterException.class)
     public void testUpdateToConcat_emptyString_throwsInvalidParameterException() {
@@ -214,6 +242,7 @@ public class StringUtilsTest2 {
         utils.updateToConcat("");
     }
 
+    // FAIL
     // 29. updateToConcat with null should throw InvalidParameterException (per comments)
     @Test(expected = InvalidParameterException.class)
     public void testUpdateToConcat_nullString_throwsInvalidParameterException() {
@@ -221,6 +250,7 @@ public class StringUtilsTest2 {
         utils.updateToConcat(null);
     }
 
+    // PASS
     // 30. If updateToConcat throws an exception, myStr should remain unchanged
     @Test
     public void testUpdateToConcat_doesNotChangeMyStrWhenExceptionThrown() {

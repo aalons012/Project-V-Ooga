@@ -138,30 +138,10 @@
 ```
 ## Failed
 ```
-    // 2. Single-argument constructor with null should throw NullPointerException (per comments)
-    @Test(expected = NullPointerException.class)
-    public void testConstructor_singleArg_null_throwsNullPointerException() {
-        new StringUtils(null);
-    }
-
-    // 3. Single-argument constructor with empty string should throw NullPointerException (per comments)
-    @Test(expected = NullPointerException.class)
-    public void testConstructor_singleArg_emptyString_throwsNullPointerException() {
-        new StringUtils("");
-    }
-
     // 7. Two-argument constructor with empty string should throw NullPointerException (per comments)
     @Test(expected = NullPointerException.class)
     public void testConstructor_twoArg_emptyString_throwsNullPointerException() {
         new StringUtils("", false);
-    }
-    // FAIL
-    // 13. endsWithChar on empty string should be handled (we expect false per reasonable spec)
-    @Test
-    public void testEndsWithChar_onEmptyString_shouldReturnFalse() {
-        // 2-arg constructor comments say it should reject null/empty, but code only checks null.
-        StringUtils utils = new StringUtils("", false); // allowed by current implementation
-        assertFalse(utils.endsWithChar('a'));           // current code will throw an exception here
     }
 
     // FAIL
@@ -219,6 +199,30 @@
         // Comment says "converts myStr attribute to all upper case"
         assertEquals("HELLO", utils.getMyStr());
     }
+
+```
+## failed + errors
+```
+    // FAIL
+    // 29. updateToConcat with null should throw InvalidParameterException (per comments)
+    @Test(expected = InvalidParameterException.class)
+    public void testUpdateToConcat_nullString_throwsInvalidParameterException() {
+        StringUtils utils = new StringUtils("abc");
+        utils.updateToConcat(null);
+    }
+    // 3. Single-argument constructor with empty string should throw NullPointerException (per comments)
+    @Test(expected = NullPointerException.class)
+    public void testConstructor_singleArg_emptyString_throwsNullPointerException() {
+        new StringUtils("");
+    }
+    // FAIL
+    // 13. endsWithChar on empty string should be handled (we expect false per reasonable spec)
+    @Test
+    public void testEndsWithChar_onEmptyString_shouldReturnFalse() {
+        // 2-arg constructor comments say it should reject null/empty, but code only checks null.
+        StringUtils utils = new StringUtils("", false); // allowed by current implementation
+        assertFalse(utils.endsWithChar('a'));           // current code will throw an exception here
+    }
     // FAIL
     // 22. returnCharAt with negative index should throw IndexOutOfBoundsException (per comments)
     @Test(expected = IndexOutOfBoundsException.class)
@@ -226,7 +230,6 @@
         StringUtils utils = new StringUtils("abc");
         utils.returnCharAt(-1);
     }
-
     // FAIL
     // 23. returnCharAt with index greater than length should throw IndexOutOfBoundsException (per comments)
     @Test(expected = IndexOutOfBoundsException.class)
@@ -234,6 +237,7 @@
         StringUtils utils = new StringUtils("abc");
         utils.returnCharAt(5);
     }
+
     // FAIL
     // 28. updateToConcat with empty string should throw InvalidParameterException (per comments)
     @Test(expected = InvalidParameterException.class)
@@ -242,11 +246,9 @@
         utils.updateToConcat("");
     }
 
-    // FAIL
-    // 29. updateToConcat with null should throw InvalidParameterException (per comments)
-    @Test(expected = InvalidParameterException.class)
-    public void testUpdateToConcat_nullString_throwsInvalidParameterException() {
-        StringUtils utils = new StringUtils("abc");
-        utils.updateToConcat(null);
+    // 2. Single-argument constructor with null should throw NullPointerException (per comments)
+    @Test(expected = NullPointerException.class)
+    public void testConstructor_singleArg_null_throwsNullPointerException() {
+        new StringUtils(null);
     }
 ```

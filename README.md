@@ -1,4 +1,4 @@
-# Passed and failed
+# Passed, Failed & Failed + Errors
 ## Passed
 ```
     // 1. Single-argument constructor with valid non-empty string
